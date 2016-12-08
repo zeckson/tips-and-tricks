@@ -1,0 +1,15 @@
+{
+  "name": "js-tips-and-tricks",
+  "version": "1.0.0",
+  "description": "JavaScript Tips And Tricks Repo",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "^3.2.0"
+  },
+  "scripts": {
+    "test": "mocha **/*.test.js"
+  },
+  "author": "zeckson",
+  "license": "ISC"
+}

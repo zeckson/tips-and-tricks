@@ -1,0 +1,57 @@
+######################
+# Node
+######################
+node_modules/
+
+# Yarn — until you use it
+yarn.lock
+
+######################
+# SASS
+######################
+.sass-cache/
+
+######################
+# Intellij
+######################
+.idea
+*.iml
+
+######################
+# Windows
+######################
+# Windows image file caches
+Thumbs.db
+
+# Folder config file
+Desktop.ini
+
+######################
+# Mac OSX
+######################
+.DS_Store
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+######################
+# Directories
+######################
+/build/**
+/bin/**
+
+######################
+# Logs
+######################
+*.log
+
+######################
+# Others
+######################
+*.*~
+*~
+.merge_file*

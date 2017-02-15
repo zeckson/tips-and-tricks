@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Пример подгрузки переводов через JSONP</title>
+</head>
+<body>
+<h1 id="greeting" class="translatable">Добро пожаловать!</h1>
+<p id="description" class="translatable">Эта станичка демонстриует возможности перевода по средствам JSONP</p>
+<form>
+    <label><span id="language_label" class="translatable">Выберите язык: </span><select id="language_selector">
+        <option value="ru" selected>Русский</option>
+        <option value="en">English</option>
+        <option value="de">Deutsch</option>
+    </select>
+    </label>
+</form>
+<script src="js/loader.js"></script>
+<script src="js/translator.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

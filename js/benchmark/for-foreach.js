@@ -1,3 +1,5 @@
+const heapdump = require('heapdump');
+
 const TOTAL = 50000000;
 const arr = new Array(TOTAL);
 const arr2 = [];
@@ -32,3 +34,5 @@ arr.forEach((it, i) => {
   arr2[i] = it;
 });
 console.timeEnd('foreach');
+
+heapdump.writeSnapshot();

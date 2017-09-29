@@ -1,8 +1,8 @@
 // Файл daughter.js
-import brother from './son.js';
+import brotherName from './son.js';
 
 const name = `Анна`;
 
-console.log(`Дочь: ${name}, брат: ${brother.name}`);
+console.log(`Дочь: ${name}, брат: ${brotherName}`);
 
 export default name;

@@ -1,8 +1,8 @@
 // Файл son.js
-import sister from './daughter.js';
+import sisterName from './daughter.js';
 
 const name = `Кирилл`;
 
-console.log(`Сын: ${name}, сестра: ${sister.name}`);
+console.log(`Сын: ${name}, сестра: ${sisterName}`);
 
 export default name;

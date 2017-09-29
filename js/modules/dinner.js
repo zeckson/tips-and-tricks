@@ -2,6 +2,6 @@ import cookSalad from './dishes/salad';
 import cookMainDish from './dishes/mainDish';
 import cookSoup from './dishes/soup';
 
-cookSalad(3);
+cookSalad(5);
 cookSoup(3);
-cookMainDish(3);
+cookMainDish(2);

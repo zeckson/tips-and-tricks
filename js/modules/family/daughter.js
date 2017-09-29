@@ -1,3 +1,4 @@
+// Файл daughter.js
 import brother from './son.js';
 
 const name = `Анна`;

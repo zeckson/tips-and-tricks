@@ -1,3 +1,4 @@
+// Файл son.js
 import sister from './daughter.js';
 
 const name = `Кирилл`;

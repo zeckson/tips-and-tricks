@@ -6,6 +6,8 @@
       this.path = paths.join(`.`);
       this.value = value;
       this.scope = scope;
+
+      console.log(paths);
     }
 
     subscribe(listener) {
@@ -85,6 +87,7 @@
   class InputEntity extends TextEntity {
     constructor(node, path) {
       super(node, path);
+      this.listeners = new Set();
 
       this.node.addEventListener(`input`, () => this.onUpdate(this));
     }
@@ -93,8 +96,14 @@
       this.node.value = value;
     }
 
-    onUpdate(entity) {
+    addListener(listener) {
+      this.listeners.add(listener);
+    }
 
+    onUpdate(entity) {
+      for (const listener of this.listeners) {
+        listener(entity);
+      }
     }
 
     get value() {
@@ -171,7 +180,7 @@
 
       for (const observer of this.observers) {
         for (const writer of this.writers) {
-          writer.onUpdate = (entity) => observer.update(entity);
+          writer.addListener((entity) => observer.update(entity));
         }
         for (const reader of this.readers) {
           observer.subscribe(reader);

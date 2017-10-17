@@ -5,6 +5,8 @@ class Observer {
     this.path = paths.join(`.`);
     this.value = value;
     this.scope = scope;
+
+    console.log(paths);
   }
 
   subscribe(listener) {
@@ -147,13 +149,14 @@ class Binder {
   }
 
   bind(scope) {
-    const traverseObject = (value, visit, path = []) => {
+    const traverseObject = (value, visit, paths = []) => {
       if (!(typeof value === `object`)) {
-        visit(path, value)
+        visit(paths.slice(), value)
       } else {
         for (const [k, v] of Object.entries(value)) {
-          path.push(k);
-          traverseObject(v, visit, path);
+          paths.push(k);
+          traverseObject(v, visit, paths);
+          paths.pop();
         }
       }
     };
@@ -177,9 +180,18 @@ class Binder {
 
 const binder = new Binder();
 const element = binder.compile(`name-content`);
+
+let username = `Alice`;
 binder.bind({
   user: {
-    name: `Alice`
+    get name() {
+      return username;
+    },
+
+    set name(newName) {
+      console.log(newName);
+      username = newName;
+    }
   }
 });
 document.body.appendChild(element);

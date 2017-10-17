@@ -6,8 +6,6 @@
       this.path = paths.join(`.`);
       this.value = value;
       this.scope = scope;
-
-      console.log(paths);
     }
 
     subscribe(listener) {

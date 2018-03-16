@@ -1,11 +1,9 @@
 import config from './config.js';
 
 const logger = {
-  log(message) {
+  debug(message) {
     if (config.isDev) {
       console.log(message);
-    } else {
-      console.error(message);
     }
   }
 };

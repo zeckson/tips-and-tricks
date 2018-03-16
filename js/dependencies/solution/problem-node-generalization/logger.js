@@ -1,11 +1,9 @@
 const config = require(`./config`);
 
 const logger = {
-  log(message) {
+  debug(message) {
     if (config.isDev) {
       console.log(message);
-    } else {
-      console.error(message);
     }
   }
 };

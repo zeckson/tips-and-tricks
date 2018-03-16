@@ -1,9 +1,12 @@
 import logger from './logger.js';
 
+const env = typeof process === `undefined` ? window : process.env;
+
 const config = {
-  isDev: window.NODE_ENV !== `production`
+  appName: `Demo APP`,
+  isDev: env.NODE_ENV !== `production`
 };
 
-logger.log(config);
+logger.debug(config);
 
 export default config;

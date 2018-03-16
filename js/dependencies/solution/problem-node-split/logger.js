@@ -4,8 +4,6 @@ const logger = {
   log(message) {
     if (this.config.isDev) {
       console.log(message);
-    } else {
-      console.error(message);
     }
   },
   init(config) {

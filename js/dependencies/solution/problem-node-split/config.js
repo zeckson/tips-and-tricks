@@ -1,6 +1,9 @@
 // Файл config.js
+const env = typeof process === `undefined` ? window : process.env;
+
 const config = {
-  isDev: process.env.NODE_ENV !== `production`,
+  appName: `Demo APP`,
+  isDev: env.NODE_ENV !== `production`,
   print(logger) {
     logger.log(config);
   }

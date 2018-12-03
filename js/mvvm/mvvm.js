@@ -37,15 +37,10 @@
     }
   }
 
-  const Replacement = {
-    START: `\${`,
-    END: `}`
-  };
-
-  const parse = (text) => {
-    const start = text.indexOf(Replacement.START);
-    const end = text.indexOf(Replacement.END);
-    return text.substring(start + Replacement.START.length, end);
+  const parse = (text, replacer) => {
+    const start = text.indexOf(replacer.start);
+    const end = text.indexOf(replacer.end);
+    return text.substring(start + replacer.start.length, end);
   };
 
   class Entity {
@@ -76,9 +71,9 @@
       return this.node.textContent;
     }
 
-    static create(node) {
+    static create(node, replacer) {
       const text = node.textContent;
-      return new TextEntity(node, parse(text));
+      return new TextEntity(node, parse(text, replacer));
     }
   }
 
@@ -108,14 +103,20 @@
       return this.node.value;
     }
 
-    static create(node) {
+    static create(node, replacer) {
       const text = node.value;
-      return new InputEntity(node, parse(text));
+      return new InputEntity(node, parse(text, replacer));
     }
   }
 
+  const DEFAULT_REPLACER = {
+    start: `\${`,
+    end: `}`
+  };
+
   class Binder {
-    constructor() {
+    constructor(replacer = DEFAULT_REPLACER) {
+      this.replacer = replacer;
       this.readers = [];
       this.writers = [];
       this.observers = [];
@@ -144,10 +145,10 @@
 
       const visitor = (node) => {
         const value = node.textContent;
-        if (value && value.indexOf(Replacement.START) >= 0) {
-          this.readers.push(TextEntity.create(node.parentNode));
+        if (value && value.indexOf(this.replacer.start) >= 0) {
+          this.readers.push(TextEntity.create(node.parentNode, this.replacer));
         } else if (node.tagName === `INPUT`) {
-          const input = InputEntity.create(node);
+          const input = InputEntity.create(node, this.replacer);
           this.writers.push(input);
           this.readers.push(input);
         }

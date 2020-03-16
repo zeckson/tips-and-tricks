@@ -3,13 +3,15 @@ function quicksort(array, left = 0, right = array.length - 1) {
     return;
   }
   console.log(array);
-  const pivot = array[left];
-  const index = partition(array, left, right, pivot);
+  const index = partition(array, left, right);
   quicksort(array, left, index - 1);
   quicksort(array, index, right);
 }
 
-function partition(array, left, right, pivot) {
+function partition(array, left, right) {
+
+  const pivot = array[left];
+
   while (left <= right) {
     while (array[left] < pivot) {
       left++;

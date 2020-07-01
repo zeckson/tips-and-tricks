@@ -9,8 +9,6 @@ echo "This statement is also appended to \"$LOGFILE\"." 1>>$LOGFILE
 echo "This statement is echoed to stdout, and will not appear in \"$LOGFILE\"."
 # These redirection commands automatically "reset" after each line.
 
-
-
 # Redirecting stderr, one line at a time.
 ERRORFILE=script.errors
 
@@ -31,5 +29,3 @@ cat script.log script.errors | sort | uniq > sorted-unique.txt
 grep "line" < sorted-unique.txt
 # Or pipe output of cat to grep which is the same
 cat sorted-unique.txt | grep "line" | wc
-
-
